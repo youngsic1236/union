@@ -1,13 +1,13 @@
 import Header from "@/components/Header";
-import Hero from "@/components/Hero";
+import Portfolio from "@/components/Portfolio";
 import Footer from "@/components/Footer";
 
-export default function Home() {
+export default function PortfolioPage() {
   return (
     <>
       <Header />
-      <main>
-        <Hero />
+      <main className="pt-20">
+        <Portfolio />
       </main>
       <Footer />
     </>
