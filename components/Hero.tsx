@@ -48,7 +48,7 @@ export default function Hero() {
       </div>
 
       {/* 서비스 소개 */}
-      <div style={{ maxWidth: 900, margin: "0 auto", padding: "60px 32px", borderBottom: "1px solid #eee" }}>
+      <div data-fade style={{ maxWidth: 900, margin: "0 auto", padding: "60px 32px", borderBottom: "1px solid #eee" }}>
         <div className="grid grid-cols-1 md:grid-cols-2" style={{ gap: 60, alignItems: "center" }}>
           <div>
             <h2 style={{ fontSize: 22, fontWeight: 700, letterSpacing: "0.05em", marginBottom: 20, color: "#1a1a1a" }}>ONLINE PROMOTION</h2>
@@ -68,7 +68,7 @@ export default function Hero() {
       </div>
 
       {/* CASTING */}
-      <div style={{ maxWidth: 900, margin: "0 auto", padding: "60px 32px", borderBottom: "1px solid #eee", textAlign: "center" }}>
+      <div data-fade style={{ maxWidth: 900, margin: "0 auto", padding: "60px 32px", borderBottom: "1px solid #eee", textAlign: "center" }}>
         <h2 style={{ fontSize: 22, fontWeight: 700, letterSpacing: "0.2em", marginBottom: 48 }}>CASTING</h2>
         <div className="grid grid-cols-2 md:grid-cols-4" style={{ gap: 24, textAlign: "center" }}>
           {[
@@ -87,7 +87,7 @@ export default function Hero() {
       </div>
 
       {/* 문제점 vs 솔루션 */}
-      <div style={{ backgroundColor: "#1a1a1a", color: "#fff", padding: "60px 32px" }}>
+      <div data-fade style={{ backgroundColor: "#1a1a1a", color: "#fff", padding: "60px 32px" }}>
         <div style={{ maxWidth: 900, margin: "0 auto" }}>
           <h2 style={{ textAlign: "center", fontSize: 16, letterSpacing: "0.2em", fontWeight: 700, marginBottom: 48 }}>현황 인력 파견의 문제점</h2>
           <div className="grid grid-cols-2 md:grid-cols-4" style={{ gap: 32, marginBottom: 48 }}>
@@ -124,7 +124,7 @@ export default function Hero() {
       </div>
 
       {/* CLIENT */}
-      <div style={{ maxWidth: 900, margin: "0 auto", padding: "60px 32px", textAlign: "center", borderTop: "1px solid #eee" }}>
+      <div data-fade style={{ maxWidth: 900, margin: "0 auto", padding: "60px 32px", textAlign: "center", borderTop: "1px solid #eee" }}>
         <h2 style={{ fontSize: 22, fontWeight: 700, letterSpacing: "0.2em", marginBottom: 40 }}>CLIENT</h2>
         <div className="grid grid-cols-2 md:grid-cols-5" style={{ gap: 24, alignItems: "center" }}>
           {["기아", "LG", "SK텔레콤", "올리브영", "현대", "KBL", "삼양라면", "한성백제", "궁디팡팡", "Wiim"].map((c) => (

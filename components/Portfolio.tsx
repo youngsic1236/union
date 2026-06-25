@@ -10,10 +10,16 @@ const works = [
   { id: 4, cat: "CORPORATE",    title: "LG 기업 행사", date: "2025.10", imgs: ["/images/events/lg_1.jpg","/images/events/lg_2.jpg","/images/events/lg_3.jpg","/images/events/lg_4.jpg","/images/events/lg_5.jpg"] },
 ];
 
+const CATS = ["ALL", "POP-UP STORE", "FESTA", "CORPORATE"] as const;
+type Cat = typeof CATS[number];
+
 type LightboxState = { imgs: string[]; index: number } | null;
 
 export default function Portfolio() {
+  const [filter, setFilter] = useState<Cat>("ALL");
   const [lightbox, setLightbox] = useState<LightboxState>(null);
+
+  const filtered = filter === "ALL" ? works : works.filter((w) => w.cat === filter);
 
   const close = useCallback(() => setLightbox(null), []);
 
@@ -52,11 +58,30 @@ export default function Portfolio() {
 
         <div style={{ textAlign: "center", borderBottom: "1px solid #eee", paddingBottom: 40, marginBottom: 48 }}>
           <h1 style={{ fontSize: 28, fontWeight: 700, letterSpacing: "0.25em", color: "#1a1a1a" }}>PORTFOLIO</h1>
-          <div style={{ width: 1, height: 24, backgroundColor: "#ccc", margin: "16px auto 0" }} />
+          <div style={{ width: 1, height: 24, backgroundColor: "#ccc", margin: "16px auto 24px" }} />
+
+          <div style={{ display: "flex", justifyContent: "center", gap: 8, flexWrap: "wrap" }}>
+            {CATS.map((c) => (
+              <button
+                key={c}
+                onClick={() => setFilter(c)}
+                style={{
+                  fontSize: 11, letterSpacing: "0.12em", padding: "7px 18px",
+                  border: "1px solid",
+                  borderColor: filter === c ? "#1a1a1a" : "#ddd",
+                  backgroundColor: filter === c ? "#1a1a1a" : "transparent",
+                  color: filter === c ? "#fff" : "#999",
+                  cursor: "pointer", transition: "all 0.2s",
+                }}
+              >
+                {c}
+              </button>
+            ))}
+          </div>
         </div>
 
-        {works.map((w) => (
-          <div key={w.id} style={{ marginBottom: 64 }}>
+        {filtered.map((w) => (
+          <div key={w.id} data-fade style={{ marginBottom: 64 }}>
             <div style={{ display: "flex", alignItems: "baseline", gap: 16, marginBottom: 20, paddingBottom: 12, borderBottom: "1px solid #f0f0f0" }}>
               <h2 style={{ fontSize: 16, fontWeight: 700, color: "#1a1a1a" }}>{w.title}</h2>
               <span style={{ fontSize: 11, color: "#aaa", letterSpacing: "0.15em" }}>{w.cat}</span>

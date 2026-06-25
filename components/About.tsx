@@ -29,7 +29,7 @@ export default function About() {
         <div style={{ height: 1, backgroundColor: "#eee", marginBottom: 60 }} />
 
         {/* CASTING PROCESS */}
-        <div style={{ textAlign: "center", marginBottom: 48 }}>
+        <div data-fade style={{ textAlign: "center", marginBottom: 48 }}>
           <h2 style={{ fontSize: 22, fontWeight: 700, letterSpacing: "0.2em", marginBottom: 16 }}>CASTING PROCESS</h2>
           <div style={{ width: 1, height: 24, backgroundColor: "#ccc", margin: "0 auto" }} />
         </div>
@@ -56,7 +56,7 @@ export default function About() {
         <div style={{ height: 1, backgroundColor: "#eee", marginBottom: 60 }} />
 
         {/* CASTING POINT */}
-        <div style={{ textAlign: "center", marginBottom: 48 }}>
+        <div data-fade style={{ textAlign: "center", marginBottom: 48 }}>
           <h2 style={{ fontSize: 22, fontWeight: 700, letterSpacing: "0.2em", marginBottom: 16 }}>CASTING POINT</h2>
           <div style={{ width: 1, height: 24, backgroundColor: "#ccc", margin: "0 auto" }} />
         </div>

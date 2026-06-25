@@ -15,6 +15,16 @@ button { cursor: pointer; }
 ::-webkit-scrollbar-track { background: #f5f5f5; }
 ::-webkit-scrollbar-thumb { background: #ccc; }
 
+[data-fade] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+[data-fade].fade-in {
+  opacity: 1;
+  transform: none;
+}
+
 .service-row {
   display: grid;
   grid-template-columns: 48px 180px 1fr;

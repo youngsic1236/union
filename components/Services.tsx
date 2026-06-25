@@ -9,7 +9,7 @@ export default function Services() {
         </div>
 
         {/* CASTING */}
-        <div style={{ marginBottom: 60 }}>
+        <div data-fade style={{ marginBottom: 60 }}>
           <h2 style={{ fontSize: 18, fontWeight: 700, letterSpacing: "0.2em", textAlign: "center", marginBottom: 40 }}>CASTING</h2>
           <div className="grid grid-cols-2 md:grid-cols-4" style={{ gap: 32, textAlign: "center" }}>
             {[
@@ -30,7 +30,7 @@ export default function Services() {
         <div style={{ height: 1, backgroundColor: "#eee", marginBottom: 60 }} />
 
         {/* 서비스 유형 */}
-        <div>
+        <div data-fade>
           <h2 style={{ fontSize: 18, fontWeight: 700, letterSpacing: "0.2em", textAlign: "center", marginBottom: 40 }}>서비스 유형</h2>
           {[
             { n: "01", en: "POP-UP STORE", ko: "팝업스토어 운영", d: "브랜드 팝업스토어의 현장 운영 스태프 공급. 부스 스태프 · 고객 응대 · 운영 지원" },
