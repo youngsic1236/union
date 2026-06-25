@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 
 const works = [
@@ -10,15 +10,41 @@ const works = [
   { id: 4, cat: "CORPORATE",    title: "LG 기업 행사", date: "2025.10", imgs: ["/images/events/lg_1.jpg","/images/events/lg_2.jpg","/images/events/lg_3.jpg","/images/events/lg_4.jpg","/images/events/lg_5.jpg"] },
 ];
 
+type LightboxState = { imgs: string[]; index: number } | null;
+
 export default function Portfolio() {
-  const [lightbox, setLightbox] = useState<string | null>(null);
+  const [lightbox, setLightbox] = useState<LightboxState>(null);
+
+  const close = useCallback(() => setLightbox(null), []);
+
+  const prev = useCallback((e: React.MouseEvent) => {
+    e.stopPropagation();
+    setLightbox((lb) => lb && lb.index > 0 ? { ...lb, index: lb.index - 1 } : lb);
+  }, []);
+
+  const next = useCallback((e: React.MouseEvent) => {
+    e.stopPropagation();
+    setLightbox((lb) => lb && lb.index < lb.imgs.length - 1 ? { ...lb, index: lb.index + 1 } : lb);
+  }, []);
 
   useEffect(() => {
     if (!lightbox) return;
-    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setLightbox(null); };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") close();
+      if (e.key === "ArrowLeft") setLightbox((lb) => lb && lb.index > 0 ? { ...lb, index: lb.index - 1 } : lb);
+      if (e.key === "ArrowRight") setLightbox((lb) => lb && lb.index < lb.imgs.length - 1 ? { ...lb, index: lb.index + 1 } : lb);
+    };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [lightbox]);
+  }, [lightbox, close]);
+
+  const btnStyle: React.CSSProperties = {
+    position: "absolute", top: "50%", transform: "translateY(-50%)",
+    background: "rgba(255,255,255,0.15)", border: "none", color: "#fff",
+    fontSize: 24, width: 44, height: 44, borderRadius: "50%",
+    display: "flex", alignItems: "center", justifyContent: "center",
+    cursor: "pointer",
+  };
 
   return (
     <div style={{ paddingTop: 68, backgroundColor: "#fff", minHeight: "100vh" }}>
@@ -38,7 +64,7 @@ export default function Portfolio() {
             </div>
             <div className="grid grid-cols-2 md:grid-cols-5" style={{ gap: 4 }}>
               {w.imgs.map((src, i) => (
-                <div key={i} onClick={() => setLightbox(src)}
+                <div key={i} onClick={() => setLightbox({ imgs: w.imgs, index: i })}
                   style={{ position: "relative", aspectRatio: "4/3", overflow: "hidden", backgroundColor: "#f5f5f5", cursor: "pointer" }}>
                   <Image src={src} alt={`${w.title} ${i + 1}`} fill style={{ objectFit: "cover", transition: "transform 0.3s" }}
                     sizes="(max-width: 768px) 50vw, 20vw"
@@ -54,13 +80,33 @@ export default function Portfolio() {
       </div>
 
       {lightbox && (
-        <div onClick={() => setLightbox(null)}
-          style={{ position: "fixed", inset: 0, zIndex: 100, backgroundColor: "rgba(0,0,0,0.9)", display: "flex", alignItems: "center", justifyContent: "center", padding: 24 }}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={lightbox} alt="포트폴리오 이미지" style={{ maxHeight: "85vh", maxWidth: "90vw", objectFit: "contain" }} />
+        <div onClick={close}
+          style={{ position: "fixed", inset: 0, zIndex: 100, backgroundColor: "rgba(0,0,0,0.92)", display: "flex", alignItems: "center", justifyContent: "center", padding: 24 }}>
+          <div style={{ position: "relative", maxHeight: "85vh", maxWidth: "90vw", display: "flex", alignItems: "center", justifyContent: "center" }}
+            onClick={(e) => e.stopPropagation()}>
+            <Image
+              src={lightbox.imgs[lightbox.index]}
+              alt="포트폴리오 이미지"
+              width={1200}
+              height={900}
+              style={{ maxHeight: "85vh", maxWidth: "90vw", objectFit: "contain", width: "auto", height: "auto" }}
+            />
+
+            {lightbox.index > 0 && (
+              <button aria-label="이전 이미지" onClick={prev} style={{ ...btnStyle, left: -52 }}>‹</button>
+            )}
+            {lightbox.index < lightbox.imgs.length - 1 && (
+              <button aria-label="다음 이미지" onClick={next} style={{ ...btnStyle, right: -52 }}>›</button>
+            )}
+
+            <div style={{ position: "absolute", bottom: -32, left: "50%", transform: "translateX(-50%)", fontSize: 12, color: "rgba(255,255,255,0.5)" }}>
+              {lightbox.index + 1} / {lightbox.imgs.length}
+            </div>
+          </div>
+
           <button
             aria-label="닫기"
-            onClick={(e) => { e.stopPropagation(); setLightbox(null); }}
+            onClick={close}
             style={{ position: "absolute", top: 24, right: 24, background: "none", border: "none", color: "#fff", fontSize: 28, cursor: "pointer" }}>×</button>
         </div>
       )}

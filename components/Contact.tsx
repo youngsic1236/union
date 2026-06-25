@@ -15,10 +15,6 @@ export default function Contact() {
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (FORMSPREE_ID === "YOUR_FORM_ID") {
-      setStatus("error");
-      return;
-    }
     setStatus("sending");
     try {
       const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
@@ -95,8 +91,8 @@ export default function Contact() {
             </div>
             <p style={{ fontSize: 14, fontWeight: 700, color: "#1a1a1a", marginBottom: 10 }}>서울시 관악구 봉천동 673-88</p>
             <p style={{ fontSize: 13, color: "#555", lineHeight: 1.9 }}>
-              M. 010-7701-0929<br />
-              E-mail. Uniongom@gmail.com
+              M. <a href="tel:01077010929" style={{ color: "#555" }}>010-7701-0929</a><br />
+              E-mail. <a href="mailto:Uniongom@gmail.com" style={{ color: "#555" }}>Uniongom@gmail.com</a>
             </p>
           </div>
 
