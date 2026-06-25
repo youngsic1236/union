@@ -1,6 +1,6 @@
 export default function Services() {
   return (
-    <main style={{ paddingTop: 68, backgroundColor: "#fff", minHeight: "100vh" }}>
+    <div style={{ paddingTop: 68, backgroundColor: "#fff", minHeight: "100vh" }}>
       <div style={{ maxWidth: 900, margin: "0 auto", padding: "60px 32px" }}>
 
         <div style={{ textAlign: "center", borderBottom: "1px solid #eee", paddingBottom: 40, marginBottom: 48 }}>
@@ -11,7 +11,7 @@ export default function Services() {
         {/* CASTING */}
         <div style={{ marginBottom: 60 }}>
           <h2 style={{ fontSize: 18, fontWeight: 700, letterSpacing: "0.2em", textAlign: "center", marginBottom: 40 }}>CASTING</h2>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 32, textAlign: "center" }}>
+          <div className="grid grid-cols-2 md:grid-cols-4" style={{ gap: 32, textAlign: "center" }}>
             {[
               { t: "PROMOTER", d: "행사장, 박람회, 쇼룸, 전시,\n부스행사, 마케팅홍보대사,\n팝업, 전시 도우미 등" },
               { t: "MODEL", d: "바디프로필, 잡지를 필두로\nSNS, YOUTUBE, 촬영대행" },
@@ -37,10 +37,12 @@ export default function Services() {
             { n: "02", en: "FESTA",        ko: "페스타 & 축제 인력", d: "대규모 페스타와 문화 축제 현장 인원 구성. 행사 진행 · 안내 · 현장 운영" },
             { n: "03", en: "CORPORATE",   ko: "스포츠 & 기업 행사", d: "기업 체육대회, 스포츠 이벤트 등 기업 행사 전문 인력. 기업 이벤트 · 스포츠 · 진행" },
             { n: "04", en: "PART-TIME",   ko: "아르바이트 대행", d: "단기 행사 아르바이트 모집부터 현장 투입까지 원스톱 처리. 단기 인력 · 빠른 섭외" },
-          ].map((s, i) => (
-            <div key={s.n} style={{ display: "grid", gridTemplateColumns: "48px 180px 1fr", gap: 24, alignItems: "start", padding: "24px 0", borderBottom: "1px solid #f0f0f0" }}>
-              <span style={{ fontSize: 11, color: "#ccc", fontFamily: "monospace", paddingTop: 2 }}>{s.n}</span>
-              <div>
+          ].map((s) => (
+            <div key={s.n} className="service-row" style={{ padding: "24px 0", borderBottom: "1px solid #f0f0f0" }}>
+              <div className="service-num" style={{ paddingTop: 2 }}>
+                <span style={{ fontSize: 11, color: "#ccc", fontFamily: "monospace" }}>{s.n}</span>
+              </div>
+              <div style={{ marginBottom: 8 }}>
                 <p style={{ fontSize: 10, color: "#aaa", letterSpacing: "0.2em", marginBottom: 6 }}>{s.en}</p>
                 <p style={{ fontSize: 16, fontWeight: 700, color: "#1a1a1a" }}>{s.ko}</p>
               </div>
@@ -50,6 +52,6 @@ export default function Services() {
         </div>
 
       </div>
-    </main>
+    </div>
   );
 }

@@ -22,7 +22,7 @@ export default function Header() {
       <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 32px", height: 68, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
 
         <Link href="/" style={{ display: "flex", alignItems: "center", gap: 10 }}>
-          <Image src="/images/logo/union-logo.png" alt="UNION GROUP" width={30} height={30} style={{ objectFit: "contain", filter: "invert(1)" }} />
+          <Image src="/images/logo/union-logo-cropped.png" alt="UNION GROUP" width={30} height={30} style={{ objectFit: "contain", filter: "invert(1)" }} />
           <span style={{ fontFamily: "'Noto Sans KR'", fontWeight: 700, fontSize: 13, letterSpacing: "0.18em", color: "#1a1a1a" }}>UNION GROUP</span>
         </Link>
 
@@ -41,7 +41,11 @@ export default function Header() {
           ))}
         </nav>
 
-        <button className="md:hidden" onClick={() => setOpen(!open)}
+        <button
+          className="md:hidden"
+          aria-label={open ? "메뉴 닫기" : "메뉴 열기"}
+          aria-expanded={open}
+          onClick={() => setOpen(!open)}
           style={{ background: "none", border: "none", display: "flex", flexDirection: "column", gap: 5 }}>
           <span style={{ display: "block", width: 22, height: 1.5, backgroundColor: "#1a1a1a" }} />
           <span style={{ display: "block", width: 22, height: 1.5, backgroundColor: "#1a1a1a" }} />
