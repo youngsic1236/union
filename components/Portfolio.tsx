@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import Image from "next/image";
+import Image from "@/components/Img";
 
 const works = [
   { id: 1, cat: "POP-UP STORE", title: "잠실 팝업 베이커리", date: "2025.12", imgs: ["/images/events/jamsil_1.jpg","/images/events/jamsil_2.jpg","/images/events/jamsil_3.jpg","/images/events/jamsil_4.jpg","/images/events/jamsil_5.jpg","/images/events/jamsil_6.jpg","/images/events/jamsil_7.jpg","/images/events/jamsil_8.jpg","/images/events/jamsil_9.jpg","/images/events/jamsil_10.jpg","/images/events/jamsil_11.jpg"] },
