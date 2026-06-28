@@ -17,7 +17,6 @@ const works = [
   { id: 11, cat: "FESTA",        title: "스프링 위크", date: "2025.04", imgs: Array.from({length:4},(_,i)=>`/images/events/springweek_${i+1}.jpg`) },
   { id: 12, cat: "POP-UP STORE", title: "송도 팝업 현장", date: "2025.12", imgs: ["/images/events/songdo_1.jpg","/images/events/songdo_2.jpg","/images/events/songdo_3.jpg","/images/events/songdo_4.jpg"] },
   { id: 13, cat: "CORPORATE",    title: "코리아 핀테크위크 2025", date: "2025.11", imgs: Array.from({length:5},(_,i)=>`/images/events/fintech_${i+1}.jpg`) },
-  { id: 14, cat: "CORPORATE",    title: "LG 기업 행사", date: "2025.10", imgs: ["/images/events/lg_1.jpg","/images/events/lg_2.jpg","/images/events/lg_3.jpg","/images/events/lg_4.jpg","/images/events/lg_5.jpg"] },
 ];
 
 const CATS = ["ALL", "POP-UP STORE", "FESTA", "CORPORATE"] as const;
