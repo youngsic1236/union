@@ -4,10 +4,20 @@ import { useState, useEffect, useCallback } from "react";
 import Image from "@/components/Img";
 
 const works = [
-  { id: 1, cat: "POP-UP STORE", title: "잠실 팝업 베이커리", date: "2025.12", imgs: ["/images/events/jamsil_1.jpg","/images/events/jamsil_2.jpg","/images/events/jamsil_3.jpg","/images/events/jamsil_4.jpg","/images/events/jamsil_5.jpg","/images/events/jamsil_6.jpg","/images/events/jamsil_7.jpg","/images/events/jamsil_8.jpg","/images/events/jamsil_9.jpg","/images/events/jamsil_10.jpg","/images/events/jamsil_11.jpg"] },
-  { id: 2, cat: "FESTA",        title: "2025 궁디팡팡 캣페스타", date: "2025.12", imgs: ["/images/events/petfesta_1.jpg","/images/events/petfesta_2.jpg","/images/events/petfesta_3.jpg","/images/events/petfesta_4.jpg","/images/events/petfesta_5.jpg","/images/events/petfesta_6.jpg","/images/events/petfesta_7.jpg"] },
-  { id: 3, cat: "POP-UP STORE", title: "송도 팝업 현장", date: "2025.12", imgs: ["/images/events/songdo_1.jpg","/images/events/songdo_2.jpg","/images/events/songdo_3.jpg","/images/events/songdo_4.jpg"] },
-  { id: 4, cat: "CORPORATE",    title: "LG 기업 행사", date: "2025.10", imgs: ["/images/events/lg_1.jpg","/images/events/lg_2.jpg","/images/events/lg_3.jpg","/images/events/lg_4.jpg","/images/events/lg_5.jpg"] },
+  { id: 1,  cat: "POP-UP STORE", title: "잠실 팝업 베이커리", date: "2025.12", imgs: ["/images/events/jamsil_1.jpg","/images/events/jamsil_2.jpg","/images/events/jamsil_3.jpg","/images/events/jamsil_4.jpg","/images/events/jamsil_5.jpg","/images/events/jamsil_6.jpg","/images/events/jamsil_7.jpg","/images/events/jamsil_8.jpg","/images/events/jamsil_9.jpg","/images/events/jamsil_10.jpg","/images/events/jamsil_11.jpg"] },
+  { id: 2,  cat: "POP-UP STORE", title: "Wiim 브랜드 팝업", date: "2025.12", imgs: Array.from({length:15},(_,i)=>`/images/events/wiim_${i+1}.jpg`) },
+  { id: 3,  cat: "POP-UP STORE", title: "KBL×Marvel 팝업 (종합운동장)", date: "2025.12", imgs: Array.from({length:5},(_,i)=>`/images/events/kbl_stadium_${i+1}.jpg`) },
+  { id: 4,  cat: "POP-UP STORE", title: "KBL×Marvel 팝업 (잠실 롯데백화점)", date: "2025.11", imgs: Array.from({length:6},(_,i)=>`/images/events/kbl_lotte_${i+1}.jpg`) },
+  { id: 5,  cat: "POP-UP STORE", title: "성수 강지 팝업", date: "2025.11", imgs: Array.from({length:5},(_,i)=>`/images/events/seongsu_${i+1}.jpg`) },
+  { id: 6,  cat: "FESTA",        title: "2025 궁디팡팡 캣페스타", date: "2025.12", imgs: ["/images/events/petfesta_1.jpg","/images/events/petfesta_2.jpg","/images/events/petfesta_3.jpg","/images/events/petfesta_4.jpg","/images/events/petfesta_5.jpg","/images/events/petfesta_6.jpg","/images/events/petfesta_7.jpg"] },
+  { id: 7,  cat: "FESTA",        title: "어텀 페스타", date: "2025.10", imgs: Array.from({length:5},(_,i)=>`/images/events/autumn_${i+1}.jpg`) },
+  { id: 8,  cat: "FESTA",        title: "AI Festa / AI Week", date: "2025.10", imgs: Array.from({length:6},(_,i)=>`/images/events/aifesta_${i+1}.jpg`) },
+  { id: 9,  cat: "FESTA",        title: "타이 페스타", date: "2025.09", imgs: Array.from({length:5},(_,i)=>`/images/events/thaifesta_${i+1}.jpg`) },
+  { id: 10, cat: "FESTA",        title: "맥주 페스타", date: "2025.08", imgs: Array.from({length:5},(_,i)=>`/images/events/beer_${i+1}.jpg`) },
+  { id: 11, cat: "FESTA",        title: "스프링 위크", date: "2025.04", imgs: Array.from({length:4},(_,i)=>`/images/events/springweek_${i+1}.jpg`) },
+  { id: 12, cat: "POP-UP STORE", title: "송도 팝업 현장", date: "2025.12", imgs: ["/images/events/songdo_1.jpg","/images/events/songdo_2.jpg","/images/events/songdo_3.jpg","/images/events/songdo_4.jpg"] },
+  { id: 13, cat: "CORPORATE",    title: "코리아 핀테크위크 2025", date: "2025.11", imgs: Array.from({length:5},(_,i)=>`/images/events/fintech_${i+1}.jpg`) },
+  { id: 14, cat: "CORPORATE",    title: "LG 기업 행사", date: "2025.10", imgs: ["/images/events/lg_1.jpg","/images/events/lg_2.jpg","/images/events/lg_3.jpg","/images/events/lg_4.jpg","/images/events/lg_5.jpg"] },
 ];
 
 const CATS = ["ALL", "POP-UP STORE", "FESTA", "CORPORATE"] as const;
